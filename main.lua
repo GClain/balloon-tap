@@ -21,5 +21,12 @@ balloon.alpha = 0.7
 local physics = require("physics")
 physics.start()
 
+-- ajout de propriété physiques
 physics.addBody(platform, "static")
 physics.addBody(balloon, "dynamic", { radius=50, bounce=0.3})
+
+local function pushBalloon()
+    -- first param = horizontal direction/ second param =vertical direction
+    -- balloon.x and balloon.y, tell the physics engine where to apply the force, relative to the balloon itself
+    balloon:applyLinearImpulse( 0, -0.75, balloon.x, balloon.y )
+end
